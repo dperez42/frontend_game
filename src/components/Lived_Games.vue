@@ -2,7 +2,7 @@
   <div>
     <b-carousel
       id="carousel-1"
-      v-model="slide"
+     :value="slide"
       :interval="4000"
       controls
       indicators
@@ -23,6 +23,10 @@
       </b-carousel-slide>
       </div>
     </b-carousel>
+    <p class="mt-4">
+      Slide #: {{ slide }}<br>
+      Sliding: {{ sliding }}
+    </p>
   </div>
 </template>
 
@@ -45,6 +49,14 @@ export default {
       }
   },
   methods: {
+    onSlideStart(slide) {
+        this.sliding = true
+        console.log(slide);
+      },
+    onSlideEnd(slide) {
+        this.sliding = false
+        console.log(slide);
+      }
   }
 }
 </script>
